@@ -1,0 +1,116 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "myhead.h"
+void insert_book();
+typedef struct
+{
+    char Title[150];
+    char Author[150];
+    char Publisher[150];
+    char ISBN[13];
+    char DOP[50];
+    int Copies;
+    char Category[150];
+} Book;
+typedef struct
+{
+    char FirstName[50];
+    char LastName[50];
+} Name;
+typedef struct
+{
+    int Building;
+    char Street[50];
+    char City [50];
+}
+Address;
+
+typedef struct
+{
+    Name name;
+    int ID;
+    Address address;
+    long PhoneNumber;
+    int Age;
+    char Email [150];
+
+
+
+} Member;
+typedef struct
+{
+
+    Book boook;
+    Member member;
+    char DateBorrowed[150];
+    char DateDueToReturn [150];
+    char DateReturned[150];
+
+
+} BookBorrowed;
+char c,c1;
+FILE*pBook;
+FILE*pMembers;
+FILE*pBorrowing;
+int main()
+{
+    print_menu();
+    c=getchar();
+    switch (c)
+    {
+    case '1':
+        print_book_managment();
+        c1=getchar();
+        switch (c1)
+        {
+        case '1':
+            system("cls");
+            printf("Please Enter Book Information");
+            break;
+        }
+
+        break;
+
+
+    case '2':
+
+        print_member_managment();
+        break;
+
+    case '3':
+        print_borrow_managment();
+        break;
+
+    case '4':
+        print_admin_actions();
+        break;
+
+    case '5':
+        system("cls");
+        printf("Save Changes.\n");
+        break;
+
+    case '6':
+        print_exit();
+        break;
+    default:
+        printf("Please choose an action from the main menu\n");
+
+
+    }
+
+
+
+    void insert_book()
+    {
+        Book book;
+        fopen("Books.txt","w");
+        printf("Enter Book Title,Author,Publisher,ISBN,DOP,Copies,Category\n");
+        scanf("%s%s%s%s%s%d%s",book.Title,book.Author,book.Publisher,book.ISBN,book.DOP,&book.Copies,book.Category);
+
+    }
+
+    return 0;
+
+}
